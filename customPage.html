@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Custom Page</title>
+    <meta name="Oliver Bai" content="obai">
+  <script>
+    let cgiLocation = "http://34.121.36.181/cgi-bin/13.JSAndCGIActivity/customScript.cgi"; 
+    function submitClicked() {
+      if (!isNameValid())
+        return;
+
+      let args = "?";
+      args += "name="+document.querySelectorAll("input[type=text]")[0].value;
+      document.querySelectorAll("input[type=radio]:checked").forEach( 
+        n => args += "&background=" + n.value );
+      document.querySelectorAll("input[type=checkbox]:checked").forEach( 
+        n => args += "&" + n.value + "=true" );
+      window.location.href = cgiLocation + args;
+    }
+
+    function isNameValid() {
+      var name_input = document.querySelector("#name-input");
+      //name_input.style.color = "maroon";
+      document.getElementById("warning-text").style.display = "block";
+        console.log(name_input)
+
+if(name_input.charAt(0)==("A")||name_input.charAt(0)==("B")||name_input.charAt(0)==("C")||name_input.charAt(0)==("D")||
+      name_input.charAt(0)==("E")||name_input.charAt(0)==("F")||name_input.charAt(0)==("G")||name_input.charAt(0)==("H")||
+      name_input.charAt(0)==("I")||name_input.charAt(0)==("J")||name_input.charAt(0)==("K")||name_input.charAt(0)==("L")||
+      name_input.charAt(0)==("M")||name_input.charAt(0)==("N")||name_input.charAt(0)==("O")||name_input.charAt(0)==("P")||
+      name_input.charAt(0)==("Q")||name_input.charAt(0)==("R")||name_input.charAt(0)==("S")||name_input.charAt(0)==("T")||
+      name_input.charAt(0)==("U")||name_input.charAt(0)==("V")||name_input.charAt(0)==("W")||name_input.charAt(0)==("X")||
+      name_input.charAt(0)==("U")||name_input.charAt(0)==("V")||name_input.charAt(0)==("W")||name_input.charAt(0)==("X")||
+      name_input.charAt(0)==("Y")||name_input.charAt(0)==("Z")||name_input.length==0)
+	{
+        return true;
+      	} 
+else 	{
+        return false;
+      	}
+
+      return true;
+    }
+
+  </script>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+    }
+    #warning-text {
+      background-color: orange;
+      display: none;
+    }
+  </style>
+  </head>
+  <body>
+    <h1>Page Customization Options:</h1>
+    <ul>
+      <li>User's Name: <input type="text" id="name-input"></li>
+      <li>Background: <ul>
+        <li><input type="radio" name="background" value="Light">Light</li>
+        <li><input type="radio" name="background" value="Dark">Dark</li></ul></li>
+      <li>Contents: <ul>
+        <li><input type="checkbox" value="Greeting">Greeting</li>
+        <li><input type="checkbox" value="SuppressOptions">Suppress Options</li></ul></li>
+      <li><input type="button" value="submit" onclick="submitClicked()"></li>
+    </ul>
+    <p id="warning-text">WARNING: Errors found in form!</p>
+  </body>
+</html>
